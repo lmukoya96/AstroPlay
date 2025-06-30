@@ -21,6 +21,8 @@ namespace AstroPlay
             InitializeComponent();         // Standard WinForms setup method that initializes UI components
             CustomizeDesign();            // Hides all submenus initially
             ApplyHoverEffect();           // Adds hover behavior to all buttons
+            panelPlayerControls.SizeChanged += panelPlayerControls_SizeChanged;
+
         }
 
         // Hides all submenu panels by default when the app launches
@@ -188,6 +190,35 @@ namespace AstroPlay
             HoverEffect(btnAdd);
             HoverEffect(btnSettings);
             HoverEffect(btnAbout);
+        }
+
+        // This method dynamically arranges the playback control buttons (Prev, Play, Next, etc.)
+        // to always stay horizontally centered and vertically near the top inside panelPlayerControls.
+        // It runs whenever panelPlayerControls is resized.
+        private void panelPlayerControls_SizeChanged(object? sender, EventArgs e)
+        {
+            int topMargin = 15; // Distance from the top edge of the panel to the top of the buttons
+
+            // Create an array of buttons in the order you want them to appear
+            Button[] buttons = { btnShuffle, btnPrevious, btnPlayOrPause, btnNext, btnRepeat };
+
+            // Calculate the total width occupied by all buttons (excluding spacing)
+            int totalWidth = buttons.Sum(btn => btn.Width);
+
+            int spacing = 10; // Space in pixels between each button
+
+            // Add total spacing between buttons to the total width
+            totalWidth += spacing * (buttons.Length - 1);
+
+            // Calculate the starting X position so that the entire button group is centered horizontally
+            int startX = (panelPlayerControls.Width - totalWidth) / 2;
+
+            // Position each button one by one
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].Top = topMargin; // Align all buttons at the same vertical position near the top
+                buttons[i].Left = startX + i * (buttons[i].Width + spacing); // Position each button with spacing
+            }
         }
 
         // ============ LOAD CHILD FORMS ============
