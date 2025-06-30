@@ -12,19 +12,25 @@ namespace AstroPlay
 {
     public partial class AstroPlayMain : Form
     {
-        // This holds a reference to the button that is currently "active" (e.g. highlighted)
-        private Button currentButton;
+        private Button currentButton;   // Stores the button that is currently selected (highlighted in blue)
+        private Form activeForm = null; // Holds a reference to the currently loaded form inside the main content panel
+
 
         public AstroPlayMain()
         {
-            InitializeComponent();
-            CustomizeDesign();
+            InitializeComponent();         // Standard WinForms setup method that initializes UI components
+            CustomizeDesign();            // Hides all submenus initially
+            ApplyHoverEffect();           // Adds hover behavior to all buttons
         }
+
+        // Hides all submenu panels by default when the app launches
         private void CustomizeDesign()
         {
             panelMusicSubMenu.Visible = false;
             panelPlaylistSubMenu.Visible = false;
         }
+
+        // Ensures all submenus are hidden
         private void HideSubMenu()
         {
             if (panelMusicSubMenu.Visible == true)
@@ -36,16 +42,18 @@ namespace AstroPlay
                 panelPlaylistSubMenu.Visible = false;
             }
         }
+
+        // Displays the submenu passed as argument and hides the rest
         private void ShowSubMenu(Panel subMenu)
         {
             if (subMenu.Visible == false)
             {
-                HideSubMenu();
-                subMenu.Visible = true;
+                HideSubMenu();           // Hide any other open submenus
+                subMenu.Visible = true; // Show the one that was clicked
             }
             else
             {
-                subMenu.Visible = false;
+                subMenu.Visible = false; // Clicking again hides it
             }
         }
 
@@ -54,106 +62,150 @@ namespace AstroPlay
         {
             if (senderBtn != null)
             {
-                // If the clicked button is different from the currently active one
+                // Only change state if a new button is clicked
                 if (currentButton != (Button)senderBtn)
                 {
-                    // Reset the appearance of the previously active button
-                    DisableButton();
-
-                    // Set the new current button
+                    DisableButton(); // Reset appearance of all buttons
                     currentButton = (Button)senderBtn;
 
-                    // Change its appearance to show it's active
-                    currentButton.BackColor = Color.FromArgb(0, 122, 204); // A nice blue
-                    currentButton.ForeColor = Color.White;
-                    currentButton.Font = new Font(currentButton.Font, FontStyle.Bold); // Optional: bold font
+                    // Style the newly selected button
+                    currentButton.BackColor = Color.FromArgb(0, 122, 204); // Bright blue background
+                    currentButton.ForeColor = Color.White;                // White text
+                    currentButton.Font = new Font(currentButton.Font, FontStyle.Bold); // Bold font
                 }
             }
         }
 
-        // Resets all top-level buttons in the side menu to default style
+        // Resets all side menu buttons to their default appearance
         private void DisableButton()
         {
-            // Loop through each control inside the side menu panel
             foreach (Control previousBtn in panelSideMenu.Controls)
             {
-                // Only apply this to buttons, not panels
+                // Only affect Button controls, not panels or labels
                 if (previousBtn.GetType() == typeof(Button))
                 {
-                    previousBtn.BackColor = Color.Black;         // Default background
-                    previousBtn.ForeColor = Color.White;         // Default text color
-                    previousBtn.Font = new Font(previousBtn.Font, FontStyle.Regular); // Unbold
+                    previousBtn.BackColor = Color.Black;                     // Reset background color
+                    previousBtn.ForeColor = Color.White;                     // Reset text color
+                    previousBtn.Font = new Font(previousBtn.Font, FontStyle.Regular); // Remove bold
                 }
             }
         }
 
+        // ============ BUTTON CLICK HANDLERS ============
+
+        // HOME
         private void btnHome_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+            // You can load a child form here with OpenChildForm(new HomeForm());
         }
 
+        // MUSIC
         private void btnMusic_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
-            ShowSubMenu(panelMusicSubMenu);
+            ShowSubMenu(panelMusicSubMenu); // Toggle the music submenu
         }
 
+        // ALBUM (submenu under Music)
         private void btnAlbum_Click(object sender, EventArgs e)
         {
-            //..
-            HideSubMenu();
+            // Load album view in future
+            HideSubMenu(); // Hide the submenu after selection
         }
 
+        // ARTIST (submenu under Music)
         private void btnArtist_Click(object sender, EventArgs e)
         {
-            //..
+            // Load artist view
             HideSubMenu();
         }
 
+        // GENRE (submenu under Music)
         private void btnGenre_Click(object sender, EventArgs e)
         {
-            //..
+            // Load genre view
             HideSubMenu();
         }
 
+        // PLAYLIST
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
-            ShowSubMenu(panelPlaylistSubMenu);
+            ShowSubMenu(panelPlaylistSubMenu); // Toggle playlist submenu
         }
 
+        // ADD NEW PLAYLIST (submenu under Playlist)
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // Code to add a new playlist
-            HideSubMenu();
+            // Code to create a new playlist
+            HideSubMenu(); // Hide after adding
         }
 
+        // SETTINGS
         private void btnSettings_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+            // Future: load a settings form here
         }
 
+        // ABOUT
         private void btnAbout_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+            // Future: show about info here
         }
 
-        private Form activeForm = null;
+        // ============ HOVER EFFECTS ============
 
+        // Adds mouse enter/leave events to a button to simulate hover
+        private void HoverEffect(Button button)
+        {
+            // When mouse hovers over the button
+            button.MouseEnter += (s, e) => button.BackColor = Color.FromArgb(0, 122, 204);
+
+            // When mouse leaves the button
+            button.MouseLeave += (s, e) =>
+            {
+                // If it's not the currently selected (active) button, reset it
+                if (button != currentButton)
+                    button.BackColor = Color.Black;
+            };
+        }
+
+        // Apply the hover effect to every interactive button
+        private void ApplyHoverEffect()
+        {
+            HoverEffect(btnHome);
+            HoverEffect(btnMusic);
+            HoverEffect(btnAlbum);
+            HoverEffect(btnArtist);
+            HoverEffect(btnGenre);
+            HoverEffect(btnPlaylist);
+            HoverEffect(btnAdd);
+            HoverEffect(btnSettings);
+            HoverEffect(btnAbout);
+        }
+
+        // ============ LOAD CHILD FORMS ============
+
+        // Loads a form into the main content panel, closing the previous one if necessary
         private void OpenChildForm(Form ChildForm)
         {
             if (activeForm != null)
             {
-                activeForm.Close();
+                activeForm.Close(); // Close previously loaded form
             }
+
             activeForm = ChildForm;
-            activeForm.TopLevel = false;
-            activeForm.FormBorderStyle = FormBorderStyle.None;
-            activeForm.Dock = DockStyle.Fill;
-            panelMainContent.Controls.Add(ChildForm);
-            panelMainContent.Tag = ChildForm;
-            activeForm.BringToFront();
-            activeForm.Show();
+            activeForm.TopLevel = false; // Makes it a control inside this form
+            activeForm.FormBorderStyle = FormBorderStyle.None; // Removes window borders
+            activeForm.Dock = DockStyle.Fill; // Make it fill the panel
+
+            panelMainContent.Controls.Add(ChildForm); // Add to main panel
+            panelMainContent.Tag = ChildForm; // Optional tracking
+            activeForm.BringToFront(); // Bring to top
+            activeForm.Show(); // Display it
         }
     }
 }
