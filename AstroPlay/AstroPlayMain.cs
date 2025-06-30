@@ -98,6 +98,7 @@ namespace AstroPlay
         {
             ActivateButton(sender);
             // You can load a child form here with OpenChildForm(new HomeForm());
+            HideSubMenu();
         }
 
         // MUSIC
@@ -147,6 +148,7 @@ namespace AstroPlay
         {
             ActivateButton(sender);
             // Future: load a settings form here
+            HideSubMenu();
         }
 
         // ABOUT
@@ -154,6 +156,7 @@ namespace AstroPlay
         {
             ActivateButton(sender);
             // Future: show about info here
+            HideSubMenu();
         }
 
         // ============ HOVER EFFECTS ============
