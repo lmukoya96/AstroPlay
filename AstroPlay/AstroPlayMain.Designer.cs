@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             panelPlayerControls = new Panel();
+            lblSongName = new Label();
+            lblAlbumName = new Label();
+            lblArtistName = new Label();
+            aP_ProgressBar1 = new AP_ProgressBar();
+            labelTimerRight = new Label();
+            labelTimerLeft = new Label();
+            pictureBox1 = new PictureBox();
             btnRepeat = new Button();
             btnPlayOrPause = new Button();
             btnNext = new Button();
@@ -49,6 +56,7 @@
             panelLogo = new Panel();
             panelMainContent = new Panel();
             panelPlayerControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelSideMenu.SuspendLayout();
             panelPlaylistSubMenu.SuspendLayout();
             panelMusicSubMenu.SuspendLayout();
@@ -57,17 +65,108 @@
             // panelPlayerControls
             // 
             panelPlayerControls.BackColor = Color.FromArgb(10, 25, 45);
+            panelPlayerControls.Controls.Add(lblSongName);
+            panelPlayerControls.Controls.Add(lblAlbumName);
+            panelPlayerControls.Controls.Add(lblArtistName);
+            panelPlayerControls.Controls.Add(aP_ProgressBar1);
+            panelPlayerControls.Controls.Add(labelTimerRight);
+            panelPlayerControls.Controls.Add(labelTimerLeft);
+            panelPlayerControls.Controls.Add(pictureBox1);
             panelPlayerControls.Controls.Add(btnRepeat);
             panelPlayerControls.Controls.Add(btnPlayOrPause);
             panelPlayerControls.Controls.Add(btnNext);
             panelPlayerControls.Controls.Add(btnPrevious);
             panelPlayerControls.Controls.Add(btnShuffle);
             panelPlayerControls.Dock = DockStyle.Bottom;
-            panelPlayerControls.Font = new Font("Microsoft Sans Serif", 6F);
-            panelPlayerControls.Location = new Point(0, 1024);
+            panelPlayerControls.Font = new Font("Microsoft Sans Serif", 6.9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panelPlayerControls.Location = new Point(0, 1014);
             panelPlayerControls.Name = "panelPlayerControls";
-            panelPlayerControls.Size = new Size(2000, 186);
+            panelPlayerControls.Size = new Size(1880, 196);
             panelPlayerControls.TabIndex = 0;
+            // 
+            // lblSongName
+            // 
+            lblSongName.AutoEllipsis = true;
+            lblSongName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSongName.ForeColor = SystemColors.ButtonHighlight;
+            lblSongName.Location = new Point(150, 7);
+            lblSongName.Name = "lblSongName";
+            lblSongName.Size = new Size(592, 59);
+            lblSongName.TabIndex = 17;
+            lblSongName.Text = "Wanna Be Startin' Somethin'";
+            lblSongName.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // lblAlbumName
+            // 
+            lblAlbumName.AutoSize = true;
+            lblAlbumName.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAlbumName.ForeColor = SystemColors.ButtonHighlight;
+            lblAlbumName.Location = new Point(151, 108);
+            lblAlbumName.Name = "lblAlbumName";
+            lblAlbumName.Size = new Size(102, 32);
+            lblAlbumName.TabIndex = 16;
+            lblAlbumName.Text = "Thriller";
+            // 
+            // lblArtistName
+            // 
+            lblArtistName.AutoSize = true;
+            lblArtistName.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblArtistName.ForeColor = SystemColors.ButtonHighlight;
+            lblArtistName.Location = new Point(151, 66);
+            lblArtistName.Name = "lblArtistName";
+            lblArtistName.Size = new Size(224, 32);
+            lblArtistName.TabIndex = 15;
+            lblArtistName.Text = "Michael Jackson";
+            // 
+            // aP_ProgressBar1
+            // 
+            aP_ProgressBar1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            aP_ProgressBar1.BackColor = Color.White;
+            aP_ProgressBar1.ChannelColor = Color.LightSteelBlue;
+            aP_ProgressBar1.ChannelHeight = 6;
+            aP_ProgressBar1.ForeColor = Color.White;
+            aP_ProgressBar1.Location = new Point(150, 147);
+            aP_ProgressBar1.Name = "aP_ProgressBar1";
+            aP_ProgressBar1.ShowValue = TextPosition.None;
+            aP_ProgressBar1.Size = new Size(1580, 25);
+            aP_ProgressBar1.SliderColor = Color.RoyalBlue;
+            aP_ProgressBar1.SliderHeight = 6;
+            aP_ProgressBar1.TabIndex = 10;
+            // 
+            // labelTimerRight
+            // 
+            labelTimerRight.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            labelTimerRight.BackColor = Color.FromArgb(10, 25, 45);
+            labelTimerRight.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelTimerRight.ForeColor = SystemColors.ButtonHighlight;
+            labelTimerRight.Location = new Point(1740, 147);
+            labelTimerRight.Name = "labelTimerRight";
+            labelTimerRight.Size = new Size(120, 40);
+            labelTimerRight.TabIndex = 13;
+            labelTimerRight.Text = "0:00:00";
+            labelTimerRight.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // labelTimerLeft
+            // 
+            labelTimerLeft.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            labelTimerLeft.BackColor = Color.FromArgb(10, 25, 45);
+            labelTimerLeft.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelTimerLeft.ForeColor = SystemColors.ButtonHighlight;
+            labelTimerLeft.Location = new Point(10, 147);
+            labelTimerLeft.Name = "labelTimerLeft";
+            labelTimerLeft.Size = new Size(120, 40);
+            labelTimerLeft.TabIndex = 12;
+            labelTimerLeft.Text = "0:00:00";
+            labelTimerLeft.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.Location = new Point(12, 7);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(133, 133);
+            pictureBox1.TabIndex = 11;
+            pictureBox1.TabStop = false;
             // 
             // btnRepeat
             // 
@@ -101,6 +200,7 @@
             btnPlayOrPause.Text = "Play";
             btnPlayOrPause.TextAlign = ContentAlignment.MiddleLeft;
             btnPlayOrPause.UseVisualStyleBackColor = false;
+            btnPlayOrPause.Click += btnPlayOrPause_Click;
             // 
             // btnNext
             // 
@@ -169,7 +269,7 @@
             panelSideMenu.Font = new Font("Microsoft Sans Serif", 9.900001F, FontStyle.Bold, GraphicsUnit.Point, 0);
             panelSideMenu.Location = new Point(0, 0);
             panelSideMenu.Name = "panelSideMenu";
-            panelSideMenu.Size = new Size(560, 1024);
+            panelSideMenu.Size = new Size(560, 1014);
             panelSideMenu.TabIndex = 1;
             // 
             // btnAbout
@@ -179,7 +279,7 @@
             btnAbout.FlatStyle = FlatStyle.Flat;
             btnAbout.Font = new Font("Microsoft Sans Serif", 9.900001F);
             btnAbout.ForeColor = Color.White;
-            btnAbout.Location = new Point(0, 919);
+            btnAbout.Location = new Point(0, 904);
             btnAbout.Name = "btnAbout";
             btnAbout.Padding = new Padding(10, 0, 0, 0);
             btnAbout.Size = new Size(560, 93);
@@ -196,7 +296,7 @@
             btnSettings.FlatStyle = FlatStyle.Flat;
             btnSettings.Font = new Font("Microsoft Sans Serif", 9.900001F);
             btnSettings.ForeColor = Color.White;
-            btnSettings.Location = new Point(0, 826);
+            btnSettings.Location = new Point(0, 811);
             btnSettings.Name = "btnSettings";
             btnSettings.Padding = new Padding(10, 0, 0, 0);
             btnSettings.Size = new Size(560, 93);
@@ -211,7 +311,7 @@
             panelPlaylistSubMenu.BackColor = Color.FromArgb(15, 15, 15);
             panelPlaylistSubMenu.Controls.Add(btnAdd);
             panelPlaylistSubMenu.Dock = DockStyle.Top;
-            panelPlaylistSubMenu.Location = new Point(0, 722);
+            panelPlaylistSubMenu.Location = new Point(0, 707);
             panelPlaylistSubMenu.Name = "panelPlaylistSubMenu";
             panelPlaylistSubMenu.Size = new Size(560, 104);
             panelPlaylistSubMenu.TabIndex = 5;
@@ -240,7 +340,7 @@
             btnPlaylist.FlatStyle = FlatStyle.Flat;
             btnPlaylist.Font = new Font("Microsoft Sans Serif", 9.900001F);
             btnPlaylist.ForeColor = Color.White;
-            btnPlaylist.Location = new Point(0, 629);
+            btnPlaylist.Location = new Point(0, 614);
             btnPlaylist.Name = "btnPlaylist";
             btnPlaylist.Padding = new Padding(10, 0, 0, 0);
             btnPlaylist.Size = new Size(560, 93);
@@ -257,7 +357,7 @@
             panelMusicSubMenu.Controls.Add(btnArtist);
             panelMusicSubMenu.Controls.Add(btnAlbum);
             panelMusicSubMenu.Dock = DockStyle.Top;
-            panelMusicSubMenu.Location = new Point(0, 335);
+            panelMusicSubMenu.Location = new Point(0, 320);
             panelMusicSubMenu.Name = "panelMusicSubMenu";
             panelMusicSubMenu.Size = new Size(560, 294);
             panelMusicSubMenu.TabIndex = 3;
@@ -320,7 +420,7 @@
             btnMusic.FlatStyle = FlatStyle.Flat;
             btnMusic.Font = new Font("Microsoft Sans Serif", 9.900001F);
             btnMusic.ForeColor = Color.White;
-            btnMusic.Location = new Point(0, 242);
+            btnMusic.Location = new Point(0, 227);
             btnMusic.Name = "btnMusic";
             btnMusic.Padding = new Padding(10, 0, 0, 0);
             btnMusic.Size = new Size(560, 93);
@@ -337,7 +437,7 @@
             btnHome.FlatStyle = FlatStyle.Flat;
             btnHome.Font = new Font("Microsoft Sans Serif", 9.900001F);
             btnHome.ForeColor = Color.White;
-            btnHome.Location = new Point(0, 149);
+            btnHome.Location = new Point(0, 134);
             btnHome.Name = "btnHome";
             btnHome.Padding = new Padding(10, 0, 0, 0);
             btnHome.Size = new Size(560, 93);
@@ -353,7 +453,7 @@
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(560, 149);
+            panelLogo.Size = new Size(560, 134);
             panelLogo.TabIndex = 0;
             // 
             // panelMainContent
@@ -362,14 +462,14 @@
             panelMainContent.Dock = DockStyle.Fill;
             panelMainContent.Location = new Point(560, 0);
             panelMainContent.Name = "panelMainContent";
-            panelMainContent.Size = new Size(1440, 1024);
+            panelMainContent.Size = new Size(1320, 1014);
             panelMainContent.TabIndex = 2;
             // 
             // AstroPlayMain
             // 
             AutoScaleDimensions = new SizeF(19F, 38F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2000, 1210);
+            ClientSize = new Size(1880, 1210);
             Controls.Add(panelMainContent);
             Controls.Add(panelSideMenu);
             Controls.Add(panelPlayerControls);
@@ -377,8 +477,9 @@
             Margin = new Padding(4);
             Name = "AstroPlayMain";
             Text = "Form1";
-            WindowState = FormWindowState.Maximized;
             panelPlayerControls.ResumeLayout(false);
+            panelPlayerControls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelSideMenu.ResumeLayout(false);
             panelPlaylistSubMenu.ResumeLayout(false);
             panelMusicSubMenu.ResumeLayout(false);
@@ -408,5 +509,12 @@
         private Button btnPrevious;
         private Button btnRepeat;
         private Button btnShuffle;
+        private AP_ProgressBar aP_ProgressBar1;
+        private PictureBox pictureBox1;
+        private Label labelTimerLeft;
+        private Label labelTimerRight;
+        private Label lblArtistName;
+        private Label lblAlbumName;
+        private Label lblSongName;
     }
 }

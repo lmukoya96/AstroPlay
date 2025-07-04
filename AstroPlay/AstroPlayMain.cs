@@ -14,7 +14,8 @@ namespace AstroPlay
     {
         private Button currentButton;   // Stores the button that is currently selected (highlighted in blue)
         private Form activeForm = null; // Holds a reference to the currently loaded form inside the main content panel
-
+        private System.Windows.Forms.Timer playbackTimer;
+        private bool isPlaying = false;
 
         public AstroPlayMain()
         {
@@ -22,6 +23,10 @@ namespace AstroPlay
             CustomizeDesign();            // Hides all submenus initially
             ApplyHoverEffect();           // Adds hover behavior to all buttons
             panelPlayerControls.SizeChanged += panelPlayerControls_SizeChanged;
+            playbackTimer = new System.Windows.Forms.Timer();
+            playbackTimer.Interval = 100; // 100 ms
+            playbackTimer.Tick += PlaybackTimer_Tick;
+
 
         }
 
@@ -219,6 +224,13 @@ namespace AstroPlay
                 buttons[i].Top = topMargin; // Align all buttons at the same vertical position near the top
                 buttons[i].Left = startX + i * (buttons[i].Width + spacing); // Position each button with spacing
             }
+
+            // === LABEL RESIZING CODE ===
+            // Step 2: Dynamically resize lblSongName
+            int rightMargin = 20; // small space between label and Shuffle button
+            int maxLabelWidth = btnShuffle.Left - lblSongName.Left - rightMargin;
+
+            lblSongName.Width = maxLabelWidth > 0 ? maxLabelWidth : 0;
         }
 
         // ============ LOAD CHILD FORMS ============
@@ -240,6 +252,24 @@ namespace AstroPlay
             panelMainContent.Tag = ChildForm; // Optional tracking
             activeForm.BringToFront(); // Bring to top
             activeForm.Show(); // Display it
+        }
+
+        private void btnPlayOrPause_Click(object sender, EventArgs e)
+        {
+            playbackTimer.Start(); // This starts the timer when Play is clicked
+        }
+
+        private void PlaybackTimer_Tick(object? sender, EventArgs e)
+        {
+            // Prevent going above the maximum
+            if (aP_ProgressBar1.Value < aP_ProgressBar1.Maximum)
+            {
+                aP_ProgressBar1.Value += 1;
+            }
+            else
+            {
+                playbackTimer.Stop(); // Optional: stop when full
+            }
         }
     }
 }
