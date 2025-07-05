@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AstroPlayMain));
             panelPlayerControls = new Panel();
             lblSongName = new Label();
             lblAlbumName = new Label();
@@ -170,86 +171,82 @@
             // 
             // btnRepeat
             // 
-            btnRepeat.BackColor = Color.Red;
+            btnRepeat.BackColor = Color.White;
             btnRepeat.FlatAppearance.BorderSize = 0;
             btnRepeat.FlatStyle = FlatStyle.Flat;
             btnRepeat.Font = new Font("Microsoft Sans Serif", 6F);
-            btnRepeat.ForeColor = Color.White;
+            btnRepeat.ForeColor = Color.Red;
             btnRepeat.Location = new Point(1153, 7);
             btnRepeat.Name = "btnRepeat";
             btnRepeat.Padding = new Padding(10, 0, 0, 0);
             btnRepeat.Size = new Size(90, 90);
             btnRepeat.TabIndex = 9;
             btnRepeat.Text = "Rep";
-            btnRepeat.TextAlign = ContentAlignment.MiddleLeft;
             btnRepeat.TextImageRelation = TextImageRelation.ImageAboveText;
             btnRepeat.UseVisualStyleBackColor = false;
             // 
             // btnPlayOrPause
             // 
-            btnPlayOrPause.BackColor = Color.Red;
+            btnPlayOrPause.BackColor = Color.FromArgb(10, 25, 45);
+            btnPlayOrPause.BackgroundImage = (Image)resources.GetObject("btnPlayOrPause.BackgroundImage");
+            btnPlayOrPause.BackgroundImageLayout = ImageLayout.Zoom;
             btnPlayOrPause.FlatAppearance.BorderSize = 0;
             btnPlayOrPause.FlatStyle = FlatStyle.Flat;
             btnPlayOrPause.Font = new Font("Microsoft Sans Serif", 6F);
-            btnPlayOrPause.ForeColor = Color.White;
+            btnPlayOrPause.ForeColor = Color.Red;
             btnPlayOrPause.Location = new Point(961, 7);
             btnPlayOrPause.Name = "btnPlayOrPause";
             btnPlayOrPause.Padding = new Padding(10, 0, 0, 0);
             btnPlayOrPause.Size = new Size(90, 90);
             btnPlayOrPause.TabIndex = 5;
-            btnPlayOrPause.Text = "Play";
-            btnPlayOrPause.TextAlign = ContentAlignment.MiddleLeft;
             btnPlayOrPause.UseVisualStyleBackColor = false;
             btnPlayOrPause.Click += btnPlayOrPause_Click;
             // 
             // btnNext
             // 
-            btnNext.BackColor = Color.Red;
+            btnNext.BackColor = Color.White;
             btnNext.FlatAppearance.BorderSize = 0;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Microsoft Sans Serif", 6F);
-            btnNext.ForeColor = Color.White;
+            btnNext.ForeColor = Color.Red;
             btnNext.Location = new Point(1057, 7);
             btnNext.Name = "btnNext";
             btnNext.Padding = new Padding(10, 0, 0, 0);
             btnNext.Size = new Size(90, 90);
             btnNext.TabIndex = 6;
             btnNext.Text = "Next";
-            btnNext.TextAlign = ContentAlignment.MiddleLeft;
             btnNext.TextImageRelation = TextImageRelation.ImageAboveText;
             btnNext.UseVisualStyleBackColor = false;
             // 
             // btnPrevious
             // 
-            btnPrevious.BackColor = Color.Red;
+            btnPrevious.BackColor = Color.White;
             btnPrevious.FlatAppearance.BorderSize = 0;
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Font = new Font("Microsoft Sans Serif", 6F);
-            btnPrevious.ForeColor = Color.White;
+            btnPrevious.ForeColor = Color.Red;
             btnPrevious.Location = new Point(865, 7);
             btnPrevious.Name = "btnPrevious";
             btnPrevious.Padding = new Padding(10, 0, 0, 0);
             btnPrevious.Size = new Size(90, 90);
             btnPrevious.TabIndex = 7;
             btnPrevious.Text = "Prev";
-            btnPrevious.TextAlign = ContentAlignment.MiddleLeft;
             btnPrevious.TextImageRelation = TextImageRelation.ImageAboveText;
             btnPrevious.UseVisualStyleBackColor = false;
             // 
             // btnShuffle
             // 
-            btnShuffle.BackColor = Color.Red;
+            btnShuffle.BackColor = Color.White;
             btnShuffle.FlatAppearance.BorderSize = 0;
             btnShuffle.FlatStyle = FlatStyle.Flat;
             btnShuffle.Font = new Font("Microsoft Sans Serif", 6F);
-            btnShuffle.ForeColor = Color.White;
+            btnShuffle.ForeColor = Color.Red;
             btnShuffle.Location = new Point(769, 7);
             btnShuffle.Name = "btnShuffle";
             btnShuffle.Padding = new Padding(10, 0, 0, 0);
             btnShuffle.Size = new Size(90, 90);
             btnShuffle.TabIndex = 8;
             btnShuffle.Text = "Shuf";
-            btnShuffle.TextAlign = ContentAlignment.MiddleLeft;
             btnShuffle.TextImageRelation = TextImageRelation.ImageAboveText;
             btnShuffle.UseVisualStyleBackColor = false;
             // 

@@ -256,7 +256,20 @@ namespace AstroPlay
 
         private void btnPlayOrPause_Click(object sender, EventArgs e)
         {
-            playbackTimer.Start(); // This starts the timer when Play is clicked
+            if (isPlaying)
+            {
+                btnPlayOrPause.BackgroundImage = Image.FromFile("Icons/play.png"); // play icon
+                isPlaying = false;
+                playbackTimer.Stop(); // This stops the timer when Pause is clicked
+                                      // Pause your audio playback here
+            }
+            else
+            {
+                btnPlayOrPause.BackgroundImage = Image.FromFile("Icons/pause.png"); // pause icon
+                isPlaying = true;
+                playbackTimer.Start(); // This starts the timer when Play is clicked
+                                       // Start or resume your audio playback here
+            }
         }
 
         private void PlaybackTimer_Tick(object? sender, EventArgs e)
