@@ -202,34 +202,37 @@ namespace AstroPlay
         // It runs whenever panelPlayerControls is resized.
         private void panelPlayerControls_SizeChanged(object? sender, EventArgs e)
         {
-            int topMargin = 15; // Distance from the top edge of the panel to the top of the buttons
-
             // Create an array of buttons in the order you want them to appear
             Button[] buttons = { btnShuffle, btnPrevious, btnPlayOrPause, btnNext, btnRepeat };
 
-            // Calculate the total width occupied by all buttons (excluding spacing)
-            int totalWidth = buttons.Sum(btn => btn.Width);
+            // Top margin for each button individually
+            var topMargins = new Dictionary<Button, int>
+            {
+                { btnShuffle, 25 },
+                { btnPrevious, 25 },
+                { btnPlayOrPause, 7 },  // It's larger, so smaller top margin keeps it visually centered
+                { btnNext, 25 },
+                { btnRepeat, 25 }
+            };
 
             int spacing = 10; // Space in pixels between each button
 
-            // Add total spacing between buttons to the total width
-            totalWidth += spacing * (buttons.Length - 1);
+            // Calculate the total width occupied by all buttons (excluding spacing)
+            int totalWidth = buttons.Sum(btn => btn.Width) + spacing * (buttons.Length - 1);
 
-            // Calculate the starting X position so that the entire button group is centered horizontally
+            // Calculate starting X position to center the group
             int startX = (panelPlayerControls.Width - totalWidth) / 2;
 
-            // Position each button one by one
-            for (int i = 0; i < buttons.Length; i++)
+            foreach (Button btn in buttons)
             {
-                buttons[i].Top = topMargin; // Align all buttons at the same vertical position near the top
-                buttons[i].Left = startX + i * (buttons[i].Width + spacing); // Position each button with spacing
+                btn.Left = startX;
+                btn.Top = topMargins.ContainsKey(btn) ? topMargins[btn] : 15; // fallback to 15 if not defined
+                startX += btn.Width + spacing;
             }
 
             // === LABEL RESIZING CODE ===
-            // Step 2: Dynamically resize lblSongName
-            int rightMargin = 20; // small space between label and Shuffle button
+            int rightMargin = 20;
             int maxLabelWidth = btnShuffle.Left - lblSongName.Left - rightMargin;
-
             lblSongName.Width = maxLabelWidth > 0 ? maxLabelWidth : 0;
         }
 

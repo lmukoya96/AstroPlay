@@ -89,7 +89,7 @@
             // 
             lblSongName.AutoEllipsis = true;
             lblSongName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSongName.ForeColor = SystemColors.ButtonHighlight;
+            lblSongName.ForeColor = Color.LightSteelBlue;
             lblSongName.Location = new Point(150, 7);
             lblSongName.Name = "lblSongName";
             lblSongName.Size = new Size(592, 59);
@@ -101,7 +101,7 @@
             // 
             lblAlbumName.AutoSize = true;
             lblAlbumName.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAlbumName.ForeColor = SystemColors.ButtonHighlight;
+            lblAlbumName.ForeColor = Color.LightSteelBlue;
             lblAlbumName.Location = new Point(151, 108);
             lblAlbumName.Name = "lblAlbumName";
             lblAlbumName.Size = new Size(102, 32);
@@ -112,7 +112,7 @@
             // 
             lblArtistName.AutoSize = true;
             lblArtistName.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblArtistName.ForeColor = SystemColors.ButtonHighlight;
+            lblArtistName.ForeColor = Color.LightSteelBlue;
             lblArtistName.Location = new Point(151, 66);
             lblArtistName.Name = "lblArtistName";
             lblArtistName.Size = new Size(224, 32);
@@ -162,7 +162,8 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackColor = Color.LightSteelBlue;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Location = new Point(12, 7);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(133, 133);
@@ -171,17 +172,18 @@
             // 
             // btnRepeat
             // 
-            btnRepeat.BackColor = Color.White;
+            btnRepeat.BackColor = Color.Transparent;
+            btnRepeat.BackgroundImage = (Image)resources.GetObject("btnRepeat.BackgroundImage");
+            btnRepeat.BackgroundImageLayout = ImageLayout.Stretch;
             btnRepeat.FlatAppearance.BorderSize = 0;
             btnRepeat.FlatStyle = FlatStyle.Flat;
             btnRepeat.Font = new Font("Microsoft Sans Serif", 6F);
             btnRepeat.ForeColor = Color.Red;
-            btnRepeat.Location = new Point(1153, 7);
+            btnRepeat.Location = new Point(1145, 27);
             btnRepeat.Name = "btnRepeat";
             btnRepeat.Padding = new Padding(10, 0, 0, 0);
-            btnRepeat.Size = new Size(90, 90);
+            btnRepeat.Size = new Size(50, 50);
             btnRepeat.TabIndex = 9;
-            btnRepeat.Text = "Rep";
             btnRepeat.TextImageRelation = TextImageRelation.ImageAboveText;
             btnRepeat.UseVisualStyleBackColor = false;
             // 
@@ -191,6 +193,8 @@
             btnPlayOrPause.BackgroundImage = (Image)resources.GetObject("btnPlayOrPause.BackgroundImage");
             btnPlayOrPause.BackgroundImageLayout = ImageLayout.Zoom;
             btnPlayOrPause.FlatAppearance.BorderSize = 0;
+            btnPlayOrPause.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnPlayOrPause.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnPlayOrPause.FlatStyle = FlatStyle.Flat;
             btnPlayOrPause.Font = new Font("Microsoft Sans Serif", 6F);
             btnPlayOrPause.ForeColor = Color.Red;
@@ -204,49 +208,52 @@
             // 
             // btnNext
             // 
-            btnNext.BackColor = Color.White;
+            btnNext.BackColor = Color.Transparent;
+            btnNext.BackgroundImage = (Image)resources.GetObject("btnNext.BackgroundImage");
+            btnNext.BackgroundImageLayout = ImageLayout.Stretch;
             btnNext.FlatAppearance.BorderSize = 0;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Microsoft Sans Serif", 6F);
             btnNext.ForeColor = Color.Red;
-            btnNext.Location = new Point(1057, 7);
+            btnNext.Location = new Point(1077, 27);
             btnNext.Name = "btnNext";
             btnNext.Padding = new Padding(10, 0, 0, 0);
-            btnNext.Size = new Size(90, 90);
+            btnNext.Size = new Size(50, 50);
             btnNext.TabIndex = 6;
-            btnNext.Text = "Next";
             btnNext.TextImageRelation = TextImageRelation.ImageAboveText;
             btnNext.UseVisualStyleBackColor = false;
             // 
             // btnPrevious
             // 
-            btnPrevious.BackColor = Color.White;
+            btnPrevious.BackColor = Color.Transparent;
+            btnPrevious.BackgroundImage = (Image)resources.GetObject("btnPrevious.BackgroundImage");
+            btnPrevious.BackgroundImageLayout = ImageLayout.Stretch;
             btnPrevious.FlatAppearance.BorderSize = 0;
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Font = new Font("Microsoft Sans Serif", 6F);
             btnPrevious.ForeColor = Color.Red;
-            btnPrevious.Location = new Point(865, 7);
+            btnPrevious.Location = new Point(886, 27);
             btnPrevious.Name = "btnPrevious";
             btnPrevious.Padding = new Padding(10, 0, 0, 0);
-            btnPrevious.Size = new Size(90, 90);
+            btnPrevious.Size = new Size(50, 50);
             btnPrevious.TabIndex = 7;
-            btnPrevious.Text = "Prev";
             btnPrevious.TextImageRelation = TextImageRelation.ImageAboveText;
             btnPrevious.UseVisualStyleBackColor = false;
             // 
             // btnShuffle
             // 
-            btnShuffle.BackColor = Color.White;
+            btnShuffle.BackColor = Color.Transparent;
+            btnShuffle.BackgroundImage = (Image)resources.GetObject("btnShuffle.BackgroundImage");
+            btnShuffle.BackgroundImageLayout = ImageLayout.Stretch;
             btnShuffle.FlatAppearance.BorderSize = 0;
             btnShuffle.FlatStyle = FlatStyle.Flat;
             btnShuffle.Font = new Font("Microsoft Sans Serif", 6F);
             btnShuffle.ForeColor = Color.Red;
-            btnShuffle.Location = new Point(769, 7);
+            btnShuffle.Location = new Point(816, 27);
             btnShuffle.Name = "btnShuffle";
             btnShuffle.Padding = new Padding(10, 0, 0, 0);
-            btnShuffle.Size = new Size(90, 90);
+            btnShuffle.Size = new Size(50, 50);
             btnShuffle.TabIndex = 8;
-            btnShuffle.Text = "Shuf";
             btnShuffle.TextImageRelation = TextImageRelation.ImageAboveText;
             btnShuffle.UseVisualStyleBackColor = false;
             // 
@@ -275,13 +282,15 @@
             btnAbout.FlatAppearance.BorderSize = 0;
             btnAbout.FlatStyle = FlatStyle.Flat;
             btnAbout.Font = new Font("Microsoft Sans Serif", 9.900001F);
-            btnAbout.ForeColor = Color.White;
+            btnAbout.ForeColor = Color.LightSteelBlue;
+            btnAbout.Image = (Image)resources.GetObject("btnAbout.Image");
+            btnAbout.ImageAlign = ContentAlignment.MiddleLeft;
             btnAbout.Location = new Point(0, 904);
             btnAbout.Name = "btnAbout";
             btnAbout.Padding = new Padding(10, 0, 0, 0);
             btnAbout.Size = new Size(560, 93);
             btnAbout.TabIndex = 7;
-            btnAbout.Text = "About";
+            btnAbout.Text = "         About";
             btnAbout.TextAlign = ContentAlignment.MiddleLeft;
             btnAbout.UseVisualStyleBackColor = true;
             btnAbout.Click += btnAbout_Click;
@@ -292,13 +301,15 @@
             btnSettings.FlatAppearance.BorderSize = 0;
             btnSettings.FlatStyle = FlatStyle.Flat;
             btnSettings.Font = new Font("Microsoft Sans Serif", 9.900001F);
-            btnSettings.ForeColor = Color.White;
+            btnSettings.ForeColor = Color.LightSteelBlue;
+            btnSettings.Image = (Image)resources.GetObject("btnSettings.Image");
+            btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
             btnSettings.Location = new Point(0, 811);
             btnSettings.Name = "btnSettings";
             btnSettings.Padding = new Padding(10, 0, 0, 0);
             btnSettings.Size = new Size(560, 93);
             btnSettings.TabIndex = 6;
-            btnSettings.Text = "Settings";
+            btnSettings.Text = "         Settings";
             btnSettings.TextAlign = ContentAlignment.MiddleLeft;
             btnSettings.UseVisualStyleBackColor = true;
             btnSettings.Click += btnSettings_Click;
@@ -319,13 +330,15 @@
             btnAdd.FlatAppearance.BorderSize = 0;
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.Font = new Font("Microsoft Sans Serif", 9.900001F);
-            btnAdd.ForeColor = Color.White;
+            btnAdd.ForeColor = Color.LightSteelBlue;
+            btnAdd.Image = (Image)resources.GetObject("btnAdd.Image");
+            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
             btnAdd.Location = new Point(0, 0);
             btnAdd.Name = "btnAdd";
             btnAdd.Padding = new Padding(40, 0, 0, 0);
             btnAdd.Size = new Size(560, 93);
             btnAdd.TabIndex = 3;
-            btnAdd.Text = "Add";
+            btnAdd.Text = "         Add";
             btnAdd.TextAlign = ContentAlignment.MiddleLeft;
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
@@ -336,13 +349,15 @@
             btnPlaylist.FlatAppearance.BorderSize = 0;
             btnPlaylist.FlatStyle = FlatStyle.Flat;
             btnPlaylist.Font = new Font("Microsoft Sans Serif", 9.900001F);
-            btnPlaylist.ForeColor = Color.White;
+            btnPlaylist.ForeColor = Color.LightSteelBlue;
+            btnPlaylist.Image = (Image)resources.GetObject("btnPlaylist.Image");
+            btnPlaylist.ImageAlign = ContentAlignment.MiddleLeft;
             btnPlaylist.Location = new Point(0, 614);
             btnPlaylist.Name = "btnPlaylist";
             btnPlaylist.Padding = new Padding(10, 0, 0, 0);
             btnPlaylist.Size = new Size(560, 93);
             btnPlaylist.TabIndex = 4;
-            btnPlaylist.Text = "Playlists";
+            btnPlaylist.Text = "         Playlists";
             btnPlaylist.TextAlign = ContentAlignment.MiddleLeft;
             btnPlaylist.UseVisualStyleBackColor = true;
             btnPlaylist.Click += btnPlaylist_Click;
@@ -365,13 +380,15 @@
             btnGenre.FlatAppearance.BorderSize = 0;
             btnGenre.FlatStyle = FlatStyle.Flat;
             btnGenre.Font = new Font("Microsoft Sans Serif", 9.900001F);
-            btnGenre.ForeColor = Color.White;
+            btnGenre.ForeColor = Color.LightSteelBlue;
+            btnGenre.Image = (Image)resources.GetObject("btnGenre.Image");
+            btnGenre.ImageAlign = ContentAlignment.MiddleLeft;
             btnGenre.Location = new Point(0, 186);
             btnGenre.Name = "btnGenre";
             btnGenre.Padding = new Padding(40, 0, 0, 0);
             btnGenre.Size = new Size(560, 93);
             btnGenre.TabIndex = 5;
-            btnGenre.Text = "Genre";
+            btnGenre.Text = "         Genre";
             btnGenre.TextAlign = ContentAlignment.MiddleLeft;
             btnGenre.UseVisualStyleBackColor = true;
             btnGenre.Click += btnGenre_Click;
@@ -382,13 +399,15 @@
             btnArtist.FlatAppearance.BorderSize = 0;
             btnArtist.FlatStyle = FlatStyle.Flat;
             btnArtist.Font = new Font("Microsoft Sans Serif", 9.900001F);
-            btnArtist.ForeColor = Color.White;
+            btnArtist.ForeColor = Color.LightSteelBlue;
+            btnArtist.Image = (Image)resources.GetObject("btnArtist.Image");
+            btnArtist.ImageAlign = ContentAlignment.MiddleLeft;
             btnArtist.Location = new Point(0, 93);
             btnArtist.Name = "btnArtist";
             btnArtist.Padding = new Padding(40, 0, 0, 0);
             btnArtist.Size = new Size(560, 93);
             btnArtist.TabIndex = 4;
-            btnArtist.Text = "Artists";
+            btnArtist.Text = "         Artists";
             btnArtist.TextAlign = ContentAlignment.MiddleLeft;
             btnArtist.UseVisualStyleBackColor = true;
             btnArtist.Click += btnArtist_Click;
@@ -399,13 +418,15 @@
             btnAlbum.FlatAppearance.BorderSize = 0;
             btnAlbum.FlatStyle = FlatStyle.Flat;
             btnAlbum.Font = new Font("Microsoft Sans Serif", 9.900001F);
-            btnAlbum.ForeColor = Color.White;
+            btnAlbum.ForeColor = Color.LightSteelBlue;
+            btnAlbum.Image = (Image)resources.GetObject("btnAlbum.Image");
+            btnAlbum.ImageAlign = ContentAlignment.MiddleLeft;
             btnAlbum.Location = new Point(0, 0);
             btnAlbum.Name = "btnAlbum";
             btnAlbum.Padding = new Padding(40, 0, 0, 0);
             btnAlbum.Size = new Size(560, 93);
             btnAlbum.TabIndex = 3;
-            btnAlbum.Text = "Albums";
+            btnAlbum.Text = "         Albums";
             btnAlbum.TextAlign = ContentAlignment.MiddleLeft;
             btnAlbum.UseVisualStyleBackColor = true;
             btnAlbum.Click += btnAlbum_Click;
@@ -416,13 +437,15 @@
             btnMusic.FlatAppearance.BorderSize = 0;
             btnMusic.FlatStyle = FlatStyle.Flat;
             btnMusic.Font = new Font("Microsoft Sans Serif", 9.900001F);
-            btnMusic.ForeColor = Color.White;
+            btnMusic.ForeColor = Color.LightSteelBlue;
+            btnMusic.Image = (Image)resources.GetObject("btnMusic.Image");
+            btnMusic.ImageAlign = ContentAlignment.MiddleLeft;
             btnMusic.Location = new Point(0, 227);
             btnMusic.Name = "btnMusic";
             btnMusic.Padding = new Padding(10, 0, 0, 0);
             btnMusic.Size = new Size(560, 93);
             btnMusic.TabIndex = 2;
-            btnMusic.Text = "Music";
+            btnMusic.Text = "         Music";
             btnMusic.TextAlign = ContentAlignment.MiddleLeft;
             btnMusic.UseVisualStyleBackColor = true;
             btnMusic.Click += btnMusic_Click;
@@ -433,13 +456,15 @@
             btnHome.FlatAppearance.BorderSize = 0;
             btnHome.FlatStyle = FlatStyle.Flat;
             btnHome.Font = new Font("Microsoft Sans Serif", 9.900001F);
-            btnHome.ForeColor = Color.White;
+            btnHome.ForeColor = Color.LightSteelBlue;
+            btnHome.Image = (Image)resources.GetObject("btnHome.Image");
+            btnHome.ImageAlign = ContentAlignment.MiddleLeft;
             btnHome.Location = new Point(0, 134);
             btnHome.Name = "btnHome";
             btnHome.Padding = new Padding(10, 0, 0, 0);
             btnHome.Size = new Size(560, 93);
             btnHome.TabIndex = 1;
-            btnHome.Text = "Home";
+            btnHome.Text = "         Home";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
             btnHome.UseVisualStyleBackColor = true;
             btnHome.Click += btnHome_Click;
