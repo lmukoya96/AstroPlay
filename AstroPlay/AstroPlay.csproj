@@ -9,8 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="NoFocusButton.cs" />
+    <Compile Remove="UnfocusableButton.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Icons\pause.png" />
     <None Remove="Icons\play.png" />
+    <None Remove="Icons\repeat_all.png" />
+    <None Remove="Icons\repeat_off.png" />
+    <None Remove="Icons\repeat_one.png" />
+    <None Remove="Icons\shuffle.png" />
+    <None Remove="Icons\shuffled.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +28,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icons\play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\repeat_all.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\repeat_off.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\repeat_one.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\shuffle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\shuffled.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

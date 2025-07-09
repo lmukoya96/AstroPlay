@@ -30,10 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AstroPlayMain));
             panelPlayerControls = new Panel();
+            panelProgressBar = new Panel();
+            panel1 = new Panel();
             lblSongName = new Label();
             lblAlbumName = new Label();
             lblArtistName = new Label();
-            aP_ProgressBar1 = new AP_ProgressBar();
             labelTimerRight = new Label();
             labelTimerLeft = new Label();
             pictureBox1 = new PictureBox();
@@ -57,6 +58,7 @@
             panelLogo = new Panel();
             panelMainContent = new Panel();
             panelPlayerControls.SuspendLayout();
+            panelProgressBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelSideMenu.SuspendLayout();
             panelPlaylistSubMenu.SuspendLayout();
@@ -66,10 +68,11 @@
             // panelPlayerControls
             // 
             panelPlayerControls.BackColor = Color.FromArgb(10, 25, 45);
+            panelPlayerControls.CausesValidation = false;
+            panelPlayerControls.Controls.Add(panelProgressBar);
             panelPlayerControls.Controls.Add(lblSongName);
             panelPlayerControls.Controls.Add(lblAlbumName);
             panelPlayerControls.Controls.Add(lblArtistName);
-            panelPlayerControls.Controls.Add(aP_ProgressBar1);
             panelPlayerControls.Controls.Add(labelTimerRight);
             panelPlayerControls.Controls.Add(labelTimerLeft);
             panelPlayerControls.Controls.Add(pictureBox1);
@@ -84,6 +87,26 @@
             panelPlayerControls.Name = "panelPlayerControls";
             panelPlayerControls.Size = new Size(1880, 196);
             panelPlayerControls.TabIndex = 0;
+            // 
+            // panelProgressBar
+            // 
+            panelProgressBar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelProgressBar.BackColor = Color.LightSteelBlue;
+            panelProgressBar.Controls.Add(panel1);
+            panelProgressBar.Location = new Point(150, 164);
+            panelProgressBar.Name = "panelProgressBar";
+            panelProgressBar.Size = new Size(1580, 10);
+            panelProgressBar.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.RoyalBlue;
+            panel1.BackgroundImageLayout = ImageLayout.None;
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(0, 10);
+            panel1.TabIndex = 0;
             // 
             // lblSongName
             // 
@@ -118,21 +141,6 @@
             lblArtistName.Size = new Size(224, 32);
             lblArtistName.TabIndex = 15;
             lblArtistName.Text = "Michael Jackson";
-            // 
-            // aP_ProgressBar1
-            // 
-            aP_ProgressBar1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            aP_ProgressBar1.BackColor = Color.White;
-            aP_ProgressBar1.ChannelColor = Color.LightSteelBlue;
-            aP_ProgressBar1.ChannelHeight = 6;
-            aP_ProgressBar1.ForeColor = Color.White;
-            aP_ProgressBar1.Location = new Point(150, 147);
-            aP_ProgressBar1.Name = "aP_ProgressBar1";
-            aP_ProgressBar1.ShowValue = TextPosition.None;
-            aP_ProgressBar1.Size = new Size(1580, 25);
-            aP_ProgressBar1.SliderColor = Color.RoyalBlue;
-            aP_ProgressBar1.SliderHeight = 6;
-            aP_ProgressBar1.TabIndex = 10;
             // 
             // labelTimerRight
             // 
@@ -176,6 +184,8 @@
             btnRepeat.BackgroundImage = (Image)resources.GetObject("btnRepeat.BackgroundImage");
             btnRepeat.BackgroundImageLayout = ImageLayout.Stretch;
             btnRepeat.FlatAppearance.BorderSize = 0;
+            btnRepeat.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnRepeat.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnRepeat.FlatStyle = FlatStyle.Flat;
             btnRepeat.Font = new Font("Microsoft Sans Serif", 6F);
             btnRepeat.ForeColor = Color.Red;
@@ -184,8 +194,10 @@
             btnRepeat.Padding = new Padding(10, 0, 0, 0);
             btnRepeat.Size = new Size(50, 50);
             btnRepeat.TabIndex = 9;
+            btnRepeat.TabStop = false;
             btnRepeat.TextImageRelation = TextImageRelation.ImageAboveText;
             btnRepeat.UseVisualStyleBackColor = false;
+            btnRepeat.Click += btnRepeat_Click;
             // 
             // btnPlayOrPause
             // 
@@ -246,6 +258,8 @@
             btnShuffle.BackgroundImage = (Image)resources.GetObject("btnShuffle.BackgroundImage");
             btnShuffle.BackgroundImageLayout = ImageLayout.Stretch;
             btnShuffle.FlatAppearance.BorderSize = 0;
+            btnShuffle.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnShuffle.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnShuffle.FlatStyle = FlatStyle.Flat;
             btnShuffle.Font = new Font("Microsoft Sans Serif", 6F);
             btnShuffle.ForeColor = Color.Red;
@@ -256,6 +270,7 @@
             btnShuffle.TabIndex = 8;
             btnShuffle.TextImageRelation = TextImageRelation.ImageAboveText;
             btnShuffle.UseVisualStyleBackColor = false;
+            btnShuffle.Click += btnShuffle_Click;
             // 
             // panelSideMenu
             // 
@@ -501,6 +516,7 @@
             Text = "Form1";
             panelPlayerControls.ResumeLayout(false);
             panelPlayerControls.PerformLayout();
+            panelProgressBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelSideMenu.ResumeLayout(false);
             panelPlaylistSubMenu.ResumeLayout(false);
@@ -529,14 +545,15 @@
         private Button btnNext;
         private Button btnPlayOrPause;
         private Button btnPrevious;
-        private Button btnRepeat;
         private Button btnShuffle;
-        private AP_ProgressBar aP_ProgressBar1;
         private PictureBox pictureBox1;
         private Label labelTimerLeft;
         private Label labelTimerRight;
         private Label lblArtistName;
         private Label lblAlbumName;
         private Label lblSongName;
+        private Panel panelProgressBar;
+        private Panel panel1;
+        private Button btnRepeat;
     }
 }

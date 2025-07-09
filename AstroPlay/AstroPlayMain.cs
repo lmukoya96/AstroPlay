@@ -12,10 +12,24 @@ namespace AstroPlay
 {
     public partial class AstroPlayMain : Form
     {
+        private enum RepeatMode
+        {
+            None,
+            RepeatAll,
+            RepeatOne
+        }
+
         private Button currentButton;   // Stores the button that is currently selected (highlighted in blue)
         private Form activeForm = null; // Holds a reference to the currently loaded form inside the main content panel
         private System.Windows.Forms.Timer playbackTimer;
+        private RepeatMode repeatMode = RepeatMode.None;
         private bool isPlaying = false;
+        private bool isShuffled = false;
+        private bool isDragging = false;
+        private double simulatedProgressRatio = 0.0; // Represents playback progress (0.0 to 1.0)
+        TimeSpan simulatedTotalTime = TimeSpan.FromMinutes(3); // Example: 3 minutes
+        TimeSpan simulatedCurrentTime = TimeSpan.Zero;
+
 
         public AstroPlayMain()
         {
@@ -23,11 +37,14 @@ namespace AstroPlay
             CustomizeDesign();            // Hides all submenus initially
             ApplyHoverEffect();           // Adds hover behavior to all buttons
             panelPlayerControls.SizeChanged += panelPlayerControls_SizeChanged;
+            panelProgressBar.MouseDown += panelProgressBar_MouseDown;
+            panelProgressBar.MouseMove += panelProgressBar_MouseMove;
+            panelProgressBar.MouseUp += panelProgressBar_MouseUp;
+            panelProgressBar.Paint += panelProgressBar_Paint;
+            MakeButtonUnfocusable(btnRepeat);
             playbackTimer = new System.Windows.Forms.Timer();
             playbackTimer.Interval = 100; // 100 ms
             playbackTimer.Tick += PlaybackTimer_Tick;
-
-
         }
 
         // Hides all submenu panels by default when the app launches
@@ -83,6 +100,87 @@ namespace AstroPlay
             }
         }
 
+        private void panelProgressBar_MouseDown(object? sender, MouseEventArgs e)// Triggered when the user presses down the mouse on the progress bar
+        {
+            isDragging = true; // Start dragging
+
+            float ratio = (float)e.X / panelProgressBar.Width;
+            simulatedProgressRatio = Math.Clamp(ratio, 0f, 1f);
+            panelProgressBar.Invalidate(); // Optional visual feedback
+        }
+
+        private void panelProgressBar_MouseUp(object? sender, MouseEventArgs e) // Triggered when the user releases the mouse button
+        {
+            if (!isDragging) return;
+
+            isDragging = false;
+
+            float ratio = (float)e.X / panelProgressBar.Width;
+            simulatedProgressRatio = Math.Clamp(ratio, 0f, 1f);
+
+            simulatedCurrentTime = TimeSpan.FromSeconds(simulatedTotalTime.TotalSeconds * simulatedProgressRatio);
+            panelProgressBar.Invalidate();
+        }
+
+        private void panelProgressBar_MouseMove(object? sender, MouseEventArgs e) // Triggered when the user moves the mouse while holding it down
+        {
+            if (isDragging)
+            {
+                float ratio = (float)e.X / panelProgressBar.Width;
+                simulatedProgressRatio = Math.Clamp(ratio, 0f, 1f);
+                panelProgressBar.Invalidate(); // Show live dragging effect
+            }
+        }
+
+        private void panelProgressBar_Paint(object? sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            // Draw the base bar (e.g. grey background)
+            using (SolidBrush backgroundBrush = new SolidBrush(Color.LightSteelBlue))
+            {
+                g.FillRectangle(backgroundBrush, 0, 0, panelProgressBar.Width, panelProgressBar.Height);
+            }
+
+            // Draw the progress part (e.g. blue foreground)
+            int progressWidth = (int)(panelProgressBar.Width * simulatedProgressRatio);
+
+            using (SolidBrush progressBrush = new SolidBrush(Color.RoyalBlue))
+            {
+                g.FillRectangle(progressBrush, 0, 0, progressWidth, panelProgressBar.Height);
+            }
+        }
+
+        /*
+        // Event handler to allow the user to seek through the audio by clicking on the progress bar
+        private void panelProgressBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Safety check: if the audio reader or output device isn't initialized, do nothing
+            if (audioFileReader == null || outputDevice == null)
+                return;
+
+            // Calculate the ratio of the mouse click position relative to the total width of the progress bar
+            float ratio = (float)e.X / panelProgressBar.Width;
+
+            // Clamp the ratio between 0 and 1 to avoid out-of-bounds errors (e.g., clicking slightly outside the bar)
+            ratio = Math.Clamp(ratio, 0f, 1f);
+
+            // Calculate the new playback position based on the ratio and set the audio's current time
+            audioFileReader.CurrentTime = TimeSpan.FromSeconds(audioFileReader.TotalTime.TotalSeconds * ratio);
+
+            // Optional: update the visual progress bar immediately after seeking (if such a method exists in your code)
+            UpdateProgressBar();
+        }
+        
+        private void UpdateProgressBar()
+        {
+            if (audioFileReader == null || audioFileReader.TotalTime.TotalSeconds == 0) return;
+
+            float progressRatio = (float)(audioFileReader.CurrentTime.TotalSeconds / audioFileReader.TotalTime.TotalSeconds);
+            panelProgressFill.Width = (int)(panelProgressBar.Width * progressRatio);
+        }
+        */
+
         // Resets all side menu buttons to their default appearance
         private void DisableButton()
         {
@@ -96,6 +194,15 @@ namespace AstroPlay
                     previousBtn.Font = new Font(previousBtn.Font, FontStyle.Regular); // Remove bold
                 }
             }
+        }
+        private void MakeButtonUnfocusable(Button btn)
+        {
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+            btn.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btn.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btn.TabStop = false;
+            //btn.SetStyle(ControlStyles.Selectable, false); // Optional, for advanced scenarios
         }
 
         // ============ BUTTON CLICK HANDLERS ============
@@ -208,11 +315,11 @@ namespace AstroPlay
             // Top margin for each button individually
             var topMargins = new Dictionary<Button, int>
             {
-                { btnShuffle, 25 },
-                { btnPrevious, 25 },
-                { btnPlayOrPause, 7 },  // It's larger, so smaller top margin keeps it visually centered
-                { btnNext, 25 },
-                { btnRepeat, 25 }
+                { btnShuffle, 38 },
+                { btnPrevious, 38 },
+                { btnPlayOrPause, 20 },  // It's larger, so smaller top margin keeps it visually centered
+                { btnNext, 38 },
+                { btnRepeat, 38 }
             };
 
             int spacing = 10; // Space in pixels between each button
@@ -274,17 +381,78 @@ namespace AstroPlay
                                        // Start or resume your audio playback here
             }
         }
-
-        private void PlaybackTimer_Tick(object? sender, EventArgs e)
+        private void btnShuffle_Click(object sender, EventArgs e)
         {
-            // Prevent going above the maximum
-            if (aP_ProgressBar1.Value < aP_ProgressBar1.Maximum)
+            if (isShuffled)
             {
-                aP_ProgressBar1.Value += 1;
+                btnShuffle.BackgroundImage = Image.FromFile("Icons/shuffle.png"); // shuffle icon
+                isShuffled = false;
+                // Add logic to disable shuffle mode here
             }
             else
             {
-                playbackTimer.Stop(); // Optional: stop when full
+                btnShuffle.BackgroundImage = Image.FromFile("Icons/shuffled.png"); // shuffled icon
+                isShuffled = true;
+                // Add logic to disable shuffle mode here
+            }
+        }
+
+        private void btnRepeat_Click(object sender, EventArgs e)
+        {
+            // Cycle the mode
+            repeatMode = (RepeatMode)(((int)repeatMode + 1) % 3);
+
+            if (repeatMode == RepeatMode.None)
+            {
+                btnRepeat.BackgroundImage = Image.FromFile("Icons/repeat_off.png");
+            }
+            else if (repeatMode == RepeatMode.RepeatAll)
+            {
+                btnRepeat.BackgroundImage = Image.FromFile("Icons/repeat_all.png");
+            }
+            else if (repeatMode == RepeatMode.RepeatOne)
+            {
+                btnRepeat.BackgroundImage = Image.FromFile("Icons/repeat_one.png");
+            }
+
+            this.ActiveControl = null;
+
+            lblSongName.Focus(); //
+
+            if (repeatMode == RepeatMode.RepeatOne)
+            {
+                // replay the same track
+            }
+            else if (repeatMode == RepeatMode.RepeatAll)
+            {
+                // move to next track, loop back to first if at end
+            }
+            else
+            {
+                // stop playback
+            }
+        }
+
+        private void PlaybackTimer_Tick(object? sender, EventArgs e)
+        {
+            if (!isPlaying || isDragging) return; // Don't update while dragging
+
+            if (simulatedCurrentTime < simulatedTotalTime)
+            {
+                simulatedCurrentTime = simulatedCurrentTime.Add(TimeSpan.FromSeconds(1));
+                simulatedProgressRatio = simulatedCurrentTime.TotalSeconds / simulatedTotalTime.TotalSeconds;
+                panelProgressBar.Invalidate();
+            }
+            else
+            {
+                playbackTimer.Stop();
+                isPlaying = false;
+                btnPlayOrPause.BackgroundImage = Image.FromFile("Icons/play.png");
+
+                // Reset visual and simulated time
+                simulatedProgressRatio = 0.0;
+                simulatedCurrentTime = TimeSpan.Zero;
+                panelProgressBar.Invalidate();
             }
         }
     }
