@@ -82,10 +82,10 @@
             panelPlayerControls.Controls.Add(btnPrevious);
             panelPlayerControls.Controls.Add(btnShuffle);
             panelPlayerControls.Dock = DockStyle.Bottom;
-            panelPlayerControls.Font = new Font("Microsoft Sans Serif", 6.9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panelPlayerControls.Location = new Point(0, 1014);
+            panelPlayerControls.Font = new Font("Segoe UI", 6.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panelPlayerControls.Location = new Point(0, 450);
             panelPlayerControls.Name = "panelPlayerControls";
-            panelPlayerControls.Size = new Size(1880, 196);
+            panelPlayerControls.Size = new Size(901, 106);
             panelPlayerControls.TabIndex = 0;
             // 
             // panelProgressBar
@@ -93,9 +93,9 @@
             panelProgressBar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelProgressBar.BackColor = Color.LightSteelBlue;
             panelProgressBar.Controls.Add(panel1);
-            panelProgressBar.Location = new Point(150, 164);
+            panelProgressBar.Location = new Point(85, 89);
             panelProgressBar.Name = "panelProgressBar";
-            panelProgressBar.Size = new Size(1580, 10);
+            panelProgressBar.Size = new Size(731, 5);
             panelProgressBar.TabIndex = 0;
             // 
             // panel1
@@ -105,17 +105,17 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(0, 10);
+            panel1.Size = new Size(0, 5);
             panel1.TabIndex = 0;
             // 
             // lblSongName
             // 
             lblSongName.AutoEllipsis = true;
-            lblSongName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSongName.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSongName.ForeColor = Color.LightSteelBlue;
-            lblSongName.Location = new Point(150, 7);
+            lblSongName.Location = new Point(85, 13);
             lblSongName.Name = "lblSongName";
-            lblSongName.Size = new Size(592, 59);
+            lblSongName.Size = new Size(319, 32);
             lblSongName.TabIndex = 17;
             lblSongName.Text = "Wanna Be Startin' Somethin'";
             lblSongName.TextAlign = ContentAlignment.MiddleLeft;
@@ -123,22 +123,22 @@
             // lblAlbumName
             // 
             lblAlbumName.AutoSize = true;
-            lblAlbumName.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAlbumName.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAlbumName.ForeColor = Color.LightSteelBlue;
-            lblAlbumName.Location = new Point(151, 108);
+            lblAlbumName.Location = new Point(85, 67);
             lblAlbumName.Name = "lblAlbumName";
-            lblAlbumName.Size = new Size(102, 32);
+            lblAlbumName.Size = new Size(47, 13);
             lblAlbumName.TabIndex = 16;
             lblAlbumName.Text = "Thriller";
             // 
             // lblArtistName
             // 
             lblArtistName.AutoSize = true;
-            lblArtistName.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblArtistName.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblArtistName.ForeColor = Color.LightSteelBlue;
-            lblArtistName.Location = new Point(151, 66);
+            lblArtistName.Location = new Point(85, 45);
             lblArtistName.Name = "lblArtistName";
-            lblArtistName.Size = new Size(224, 32);
+            lblArtistName.Size = new Size(98, 13);
             lblArtistName.TabIndex = 15;
             lblArtistName.Text = "Michael Jackson";
             // 
@@ -148,9 +148,9 @@
             labelTimerRight.BackColor = Color.FromArgb(10, 25, 45);
             labelTimerRight.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelTimerRight.ForeColor = SystemColors.ButtonHighlight;
-            labelTimerRight.Location = new Point(1740, 147);
+            labelTimerRight.Location = new Point(842, 83);
             labelTimerRight.Name = "labelTimerRight";
-            labelTimerRight.Size = new Size(120, 40);
+            labelTimerRight.Size = new Size(47, 15);
             labelTimerRight.TabIndex = 13;
             labelTimerRight.Text = "0:00:00";
             labelTimerRight.TextAlign = ContentAlignment.MiddleRight;
@@ -161,9 +161,9 @@
             labelTimerLeft.BackColor = Color.FromArgb(10, 25, 45);
             labelTimerLeft.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelTimerLeft.ForeColor = SystemColors.ButtonHighlight;
-            labelTimerLeft.Location = new Point(10, 147);
+            labelTimerLeft.Location = new Point(12, 83);
             labelTimerLeft.Name = "labelTimerLeft";
-            labelTimerLeft.Size = new Size(120, 40);
+            labelTimerLeft.Size = new Size(47, 15);
             labelTimerLeft.TabIndex = 12;
             labelTimerLeft.Text = "0:00:00";
             labelTimerLeft.TextAlign = ContentAlignment.MiddleRight;
@@ -172,9 +172,9 @@
             // 
             pictureBox1.BackColor = Color.LightSteelBlue;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(12, 7);
+            pictureBox1.Location = new Point(12, 13);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(133, 133);
+            pictureBox1.Size = new Size(67, 67);
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
@@ -189,10 +189,10 @@
             btnRepeat.FlatStyle = FlatStyle.Flat;
             btnRepeat.Font = new Font("Microsoft Sans Serif", 6F);
             btnRepeat.ForeColor = Color.Red;
-            btnRepeat.Location = new Point(1145, 27);
+            btnRepeat.Location = new Point(554, 25);
             btnRepeat.Name = "btnRepeat";
             btnRepeat.Padding = new Padding(10, 0, 0, 0);
-            btnRepeat.Size = new Size(50, 50);
+            btnRepeat.Size = new Size(25, 25);
             btnRepeat.TabIndex = 9;
             btnRepeat.TabStop = false;
             btnRepeat.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -210,10 +210,10 @@
             btnPlayOrPause.FlatStyle = FlatStyle.Flat;
             btnPlayOrPause.Font = new Font("Microsoft Sans Serif", 6F);
             btnPlayOrPause.ForeColor = Color.Red;
-            btnPlayOrPause.Location = new Point(961, 7);
+            btnPlayOrPause.Location = new Point(472, 15);
             btnPlayOrPause.Name = "btnPlayOrPause";
             btnPlayOrPause.Padding = new Padding(10, 0, 0, 0);
-            btnPlayOrPause.Size = new Size(90, 90);
+            btnPlayOrPause.Size = new Size(45, 45);
             btnPlayOrPause.TabIndex = 5;
             btnPlayOrPause.UseVisualStyleBackColor = false;
             btnPlayOrPause.Click += btnPlayOrPause_Click;
@@ -227,10 +227,10 @@
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Microsoft Sans Serif", 6F);
             btnNext.ForeColor = Color.Red;
-            btnNext.Location = new Point(1077, 27);
+            btnNext.Location = new Point(523, 25);
             btnNext.Name = "btnNext";
             btnNext.Padding = new Padding(10, 0, 0, 0);
-            btnNext.Size = new Size(50, 50);
+            btnNext.Size = new Size(25, 25);
             btnNext.TabIndex = 6;
             btnNext.TextImageRelation = TextImageRelation.ImageAboveText;
             btnNext.UseVisualStyleBackColor = false;
@@ -244,10 +244,10 @@
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Font = new Font("Microsoft Sans Serif", 6F);
             btnPrevious.ForeColor = Color.Red;
-            btnPrevious.Location = new Point(886, 27);
+            btnPrevious.Location = new Point(441, 25);
             btnPrevious.Name = "btnPrevious";
             btnPrevious.Padding = new Padding(10, 0, 0, 0);
-            btnPrevious.Size = new Size(50, 50);
+            btnPrevious.Size = new Size(25, 25);
             btnPrevious.TabIndex = 7;
             btnPrevious.TextImageRelation = TextImageRelation.ImageAboveText;
             btnPrevious.UseVisualStyleBackColor = false;
@@ -263,10 +263,10 @@
             btnShuffle.FlatStyle = FlatStyle.Flat;
             btnShuffle.Font = new Font("Microsoft Sans Serif", 6F);
             btnShuffle.ForeColor = Color.Red;
-            btnShuffle.Location = new Point(816, 27);
+            btnShuffle.Location = new Point(410, 25);
             btnShuffle.Name = "btnShuffle";
             btnShuffle.Padding = new Padding(10, 0, 0, 0);
-            btnShuffle.Size = new Size(50, 50);
+            btnShuffle.Size = new Size(25, 25);
             btnShuffle.TabIndex = 8;
             btnShuffle.TextImageRelation = TextImageRelation.ImageAboveText;
             btnShuffle.UseVisualStyleBackColor = false;
@@ -288,7 +288,7 @@
             panelSideMenu.Font = new Font("Microsoft Sans Serif", 9.900001F, FontStyle.Bold, GraphicsUnit.Point, 0);
             panelSideMenu.Location = new Point(0, 0);
             panelSideMenu.Name = "panelSideMenu";
-            panelSideMenu.Size = new Size(560, 1014);
+            panelSideMenu.Size = new Size(280, 450);
             panelSideMenu.TabIndex = 1;
             // 
             // btnAbout
@@ -300,10 +300,10 @@
             btnAbout.ForeColor = Color.LightSteelBlue;
             btnAbout.Image = (Image)resources.GetObject("btnAbout.Image");
             btnAbout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAbout.Location = new Point(0, 904);
+            btnAbout.Location = new Point(0, 404);
             btnAbout.Name = "btnAbout";
             btnAbout.Padding = new Padding(10, 0, 0, 0);
-            btnAbout.Size = new Size(560, 93);
+            btnAbout.Size = new Size(280, 40);
             btnAbout.TabIndex = 7;
             btnAbout.Text = "         About";
             btnAbout.TextAlign = ContentAlignment.MiddleLeft;
@@ -319,10 +319,10 @@
             btnSettings.ForeColor = Color.LightSteelBlue;
             btnSettings.Image = (Image)resources.GetObject("btnSettings.Image");
             btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.Location = new Point(0, 811);
+            btnSettings.Location = new Point(0, 364);
             btnSettings.Name = "btnSettings";
             btnSettings.Padding = new Padding(10, 0, 0, 0);
-            btnSettings.Size = new Size(560, 93);
+            btnSettings.Size = new Size(280, 40);
             btnSettings.TabIndex = 6;
             btnSettings.Text = "         Settings";
             btnSettings.TextAlign = ContentAlignment.MiddleLeft;
@@ -334,9 +334,9 @@
             panelPlaylistSubMenu.BackColor = Color.FromArgb(15, 15, 15);
             panelPlaylistSubMenu.Controls.Add(btnAdd);
             panelPlaylistSubMenu.Dock = DockStyle.Top;
-            panelPlaylistSubMenu.Location = new Point(0, 707);
+            panelPlaylistSubMenu.Location = new Point(0, 314);
             panelPlaylistSubMenu.Name = "panelPlaylistSubMenu";
-            panelPlaylistSubMenu.Size = new Size(560, 104);
+            panelPlaylistSubMenu.Size = new Size(280, 50);
             panelPlaylistSubMenu.TabIndex = 5;
             // 
             // btnAdd
@@ -351,7 +351,7 @@
             btnAdd.Location = new Point(0, 0);
             btnAdd.Name = "btnAdd";
             btnAdd.Padding = new Padding(40, 0, 0, 0);
-            btnAdd.Size = new Size(560, 93);
+            btnAdd.Size = new Size(280, 40);
             btnAdd.TabIndex = 3;
             btnAdd.Text = "         Add";
             btnAdd.TextAlign = ContentAlignment.MiddleLeft;
@@ -367,10 +367,10 @@
             btnPlaylist.ForeColor = Color.LightSteelBlue;
             btnPlaylist.Image = (Image)resources.GetObject("btnPlaylist.Image");
             btnPlaylist.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPlaylist.Location = new Point(0, 614);
+            btnPlaylist.Location = new Point(0, 274);
             btnPlaylist.Name = "btnPlaylist";
             btnPlaylist.Padding = new Padding(10, 0, 0, 0);
-            btnPlaylist.Size = new Size(560, 93);
+            btnPlaylist.Size = new Size(280, 40);
             btnPlaylist.TabIndex = 4;
             btnPlaylist.Text = "         Playlists";
             btnPlaylist.TextAlign = ContentAlignment.MiddleLeft;
@@ -384,9 +384,9 @@
             panelMusicSubMenu.Controls.Add(btnArtist);
             panelMusicSubMenu.Controls.Add(btnAlbum);
             panelMusicSubMenu.Dock = DockStyle.Top;
-            panelMusicSubMenu.Location = new Point(0, 320);
+            panelMusicSubMenu.Location = new Point(0, 147);
             panelMusicSubMenu.Name = "panelMusicSubMenu";
-            panelMusicSubMenu.Size = new Size(560, 294);
+            panelMusicSubMenu.Size = new Size(280, 127);
             panelMusicSubMenu.TabIndex = 3;
             // 
             // btnGenre
@@ -398,10 +398,10 @@
             btnGenre.ForeColor = Color.LightSteelBlue;
             btnGenre.Image = (Image)resources.GetObject("btnGenre.Image");
             btnGenre.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGenre.Location = new Point(0, 186);
+            btnGenre.Location = new Point(0, 80);
             btnGenre.Name = "btnGenre";
             btnGenre.Padding = new Padding(40, 0, 0, 0);
-            btnGenre.Size = new Size(560, 93);
+            btnGenre.Size = new Size(280, 40);
             btnGenre.TabIndex = 5;
             btnGenre.Text = "         Genre";
             btnGenre.TextAlign = ContentAlignment.MiddleLeft;
@@ -417,10 +417,10 @@
             btnArtist.ForeColor = Color.LightSteelBlue;
             btnArtist.Image = (Image)resources.GetObject("btnArtist.Image");
             btnArtist.ImageAlign = ContentAlignment.MiddleLeft;
-            btnArtist.Location = new Point(0, 93);
+            btnArtist.Location = new Point(0, 40);
             btnArtist.Name = "btnArtist";
             btnArtist.Padding = new Padding(40, 0, 0, 0);
-            btnArtist.Size = new Size(560, 93);
+            btnArtist.Size = new Size(280, 40);
             btnArtist.TabIndex = 4;
             btnArtist.Text = "         Artists";
             btnArtist.TextAlign = ContentAlignment.MiddleLeft;
@@ -439,7 +439,7 @@
             btnAlbum.Location = new Point(0, 0);
             btnAlbum.Name = "btnAlbum";
             btnAlbum.Padding = new Padding(40, 0, 0, 0);
-            btnAlbum.Size = new Size(560, 93);
+            btnAlbum.Size = new Size(280, 40);
             btnAlbum.TabIndex = 3;
             btnAlbum.Text = "         Albums";
             btnAlbum.TextAlign = ContentAlignment.MiddleLeft;
@@ -455,10 +455,10 @@
             btnMusic.ForeColor = Color.LightSteelBlue;
             btnMusic.Image = (Image)resources.GetObject("btnMusic.Image");
             btnMusic.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMusic.Location = new Point(0, 227);
+            btnMusic.Location = new Point(0, 107);
             btnMusic.Name = "btnMusic";
             btnMusic.Padding = new Padding(10, 0, 0, 0);
-            btnMusic.Size = new Size(560, 93);
+            btnMusic.Size = new Size(280, 40);
             btnMusic.TabIndex = 2;
             btnMusic.Text = "         Music";
             btnMusic.TextAlign = ContentAlignment.MiddleLeft;
@@ -474,10 +474,10 @@
             btnHome.ForeColor = Color.LightSteelBlue;
             btnHome.Image = (Image)resources.GetObject("btnHome.Image");
             btnHome.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHome.Location = new Point(0, 134);
+            btnHome.Location = new Point(0, 67);
             btnHome.Name = "btnHome";
             btnHome.Padding = new Padding(10, 0, 0, 0);
-            btnHome.Size = new Size(560, 93);
+            btnHome.Size = new Size(280, 40);
             btnHome.TabIndex = 1;
             btnHome.Text = "         Home";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
@@ -490,23 +490,23 @@
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(560, 134);
+            panelLogo.Size = new Size(280, 67);
             panelLogo.TabIndex = 0;
             // 
             // panelMainContent
             // 
             panelMainContent.BackColor = Color.FromArgb(15, 15, 15);
             panelMainContent.Dock = DockStyle.Fill;
-            panelMainContent.Location = new Point(560, 0);
+            panelMainContent.Location = new Point(280, 0);
             panelMainContent.Name = "panelMainContent";
-            panelMainContent.Size = new Size(1320, 1014);
+            panelMainContent.Size = new Size(621, 450);
             panelMainContent.TabIndex = 2;
             // 
             // AstroPlayMain
             // 
-            AutoScaleDimensions = new SizeF(19F, 38F);
+            AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1880, 1210);
+            ClientSize = new Size(901, 556);
             Controls.Add(panelMainContent);
             Controls.Add(panelSideMenu);
             Controls.Add(panelPlayerControls);
