@@ -300,7 +300,7 @@
             btnAbout.ForeColor = Color.LightSteelBlue;
             btnAbout.Image = (Image)resources.GetObject("btnAbout.Image");
             btnAbout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAbout.Location = new Point(0, 404);
+            btnAbout.Location = new Point(0, 398);
             btnAbout.Name = "btnAbout";
             btnAbout.Padding = new Padding(10, 0, 0, 0);
             btnAbout.Size = new Size(280, 40);
@@ -319,7 +319,7 @@
             btnSettings.ForeColor = Color.LightSteelBlue;
             btnSettings.Image = (Image)resources.GetObject("btnSettings.Image");
             btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.Location = new Point(0, 364);
+            btnSettings.Location = new Point(0, 358);
             btnSettings.Name = "btnSettings";
             btnSettings.Padding = new Padding(10, 0, 0, 0);
             btnSettings.Size = new Size(280, 40);
@@ -336,7 +336,7 @@
             panelPlaylistSubMenu.Dock = DockStyle.Top;
             panelPlaylistSubMenu.Location = new Point(0, 314);
             panelPlaylistSubMenu.Name = "panelPlaylistSubMenu";
-            panelPlaylistSubMenu.Size = new Size(280, 50);
+            panelPlaylistSubMenu.Size = new Size(280, 44);
             panelPlaylistSubMenu.TabIndex = 5;
             // 
             // btnAdd
