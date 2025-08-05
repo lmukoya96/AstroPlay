@@ -56,6 +56,7 @@
             btnMusic = new Button();
             btnHome = new Button();
             panelLogo = new Panel();
+            pictureBoxLogo = new PictureBox();
             panelMainContent = new Panel();
             panelPlayerControls.SuspendLayout();
             panelProgressBar.SuspendLayout();
@@ -63,6 +64,8 @@
             panelSideMenu.SuspendLayout();
             panelPlaylistSubMenu.SuspendLayout();
             panelMusicSubMenu.SuspendLayout();
+            panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // panelPlayerControls
@@ -111,11 +114,11 @@
             // lblSongName
             // 
             lblSongName.AutoEllipsis = true;
-            lblSongName.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSongName.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSongName.ForeColor = Color.LightSteelBlue;
-            lblSongName.Location = new Point(85, 13);
+            lblSongName.Location = new Point(85, 4);
             lblSongName.Name = "lblSongName";
-            lblSongName.Size = new Size(319, 32);
+            lblSongName.Size = new Size(319, 30);
             lblSongName.TabIndex = 17;
             lblSongName.Text = "Wanna Be Startin' Somethin'";
             lblSongName.TextAlign = ContentAlignment.MiddleLeft;
@@ -123,22 +126,22 @@
             // lblAlbumName
             // 
             lblAlbumName.AutoSize = true;
-            lblAlbumName.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblAlbumName.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAlbumName.ForeColor = Color.LightSteelBlue;
-            lblAlbumName.Location = new Point(85, 67);
+            lblAlbumName.Location = new Point(85, 56);
             lblAlbumName.Name = "lblAlbumName";
-            lblAlbumName.Size = new Size(47, 13);
+            lblAlbumName.Size = new Size(48, 16);
             lblAlbumName.TabIndex = 16;
             lblAlbumName.Text = "Thriller";
             // 
             // lblArtistName
             // 
             lblArtistName.AutoSize = true;
-            lblArtistName.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblArtistName.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblArtistName.ForeColor = Color.LightSteelBlue;
-            lblArtistName.Location = new Point(85, 45);
+            lblArtistName.Location = new Point(85, 34);
             lblArtistName.Name = "lblArtistName";
-            lblArtistName.Size = new Size(98, 13);
+            lblArtistName.Size = new Size(108, 16);
             lblArtistName.TabIndex = 15;
             lblArtistName.Text = "Michael Jackson";
             // 
@@ -171,8 +174,9 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.LightSteelBlue;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(12, 13);
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(12, 6);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(67, 67);
             pictureBox1.TabIndex = 11;
@@ -487,11 +491,23 @@
             // panelLogo
             // 
             panelLogo.BackColor = Color.DarkKhaki;
+            panelLogo.Controls.Add(pictureBoxLogo);
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
             panelLogo.Size = new Size(280, 67);
             panelLogo.TabIndex = 0;
+            // 
+            // pictureBoxLogo
+            // 
+            pictureBoxLogo.BackgroundImage = (Image)resources.GetObject("pictureBoxLogo.BackgroundImage");
+            pictureBoxLogo.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxLogo.Dock = DockStyle.Fill;
+            pictureBoxLogo.Location = new Point(0, 0);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(280, 67);
+            pictureBoxLogo.TabIndex = 0;
+            pictureBoxLogo.TabStop = false;
             // 
             // panelMainContent
             // 
@@ -511,6 +527,7 @@
             Controls.Add(panelSideMenu);
             Controls.Add(panelPlayerControls);
             Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "AstroPlayMain";
             Text = "Form1";
@@ -521,6 +538,8 @@
             panelSideMenu.ResumeLayout(false);
             panelPlaylistSubMenu.ResumeLayout(false);
             panelMusicSubMenu.ResumeLayout(false);
+            panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             ResumeLayout(false);
 
         }
@@ -555,5 +574,6 @@
         private Panel panelProgressBar;
         private Panel panel1;
         private Button btnRepeat;
+        private PictureBox pictureBoxLogo;
     }
 }

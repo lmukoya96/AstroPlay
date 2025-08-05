@@ -315,11 +315,11 @@ namespace AstroPlay
             // Top margin for each button individually
             var topMargins = new Dictionary<Button, int>
             {
-                { btnShuffle, 38 },
-                { btnPrevious, 38 },
-                { btnPlayOrPause, 20 },  // It's larger, so smaller top margin keeps it visually centered
-                { btnNext, 38 },
-                { btnRepeat, 38 }
+                { btnShuffle, 25 },
+                { btnPrevious, 25 },
+                { btnPlayOrPause, 15 },  // It's larger, so smaller top margin keeps it visually centered
+                { btnNext, 25 },
+                { btnRepeat, 25 }
             };
 
             int spacing = 10; // Space in pixels between each button
