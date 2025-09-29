@@ -21,14 +21,16 @@ namespace AstroPlay
 
         private Button currentButton;   // Stores the button that is currently selected (highlighted in blue)
         private Form activeForm = null; // Holds a reference to the currently loaded form inside the main content panel
+        private AudioPlayer audioPlayer = new AudioPlayer(); // Instance of the audio player
         private System.Windows.Forms.Timer playbackTimer;
         private RepeatMode repeatMode = RepeatMode.None;
         private bool isPlaying = false;
+        private bool isPaused = false;
         private bool isShuffled = false;
         private bool isDragging = false;
-        private double simulatedProgressRatio = 0.0; // Represents playback progress (0.0 to 1.0)
-        TimeSpan simulatedTotalTime = TimeSpan.FromMinutes(3); // Example: 3 minutes
-        TimeSpan simulatedCurrentTime = TimeSpan.Zero;
+        private double simulatedProgressRatio; // Represents playback progress (0.0 to 1.0)
+        TimeSpan simulatedTotalTime;
+        TimeSpan simulatedCurrentTime;
 
 
         public AstroPlayMain()
@@ -43,7 +45,7 @@ namespace AstroPlay
             panelProgressBar.Paint += panelProgressBar_Paint;
             MakeButtonUnfocusable(btnRepeat);
             playbackTimer = new System.Windows.Forms.Timer();
-            playbackTimer.Interval = 100; // 100 ms
+            playbackTimer.Interval = 1000; // 1000 ms
             playbackTimer.Tick += PlaybackTimer_Tick;
         }
 
@@ -109,18 +111,22 @@ namespace AstroPlay
             panelProgressBar.Invalidate(); // Optional visual feedback
         }
 
-        private void panelProgressBar_MouseUp(object? sender, MouseEventArgs e) // Triggered when the user releases the mouse button
-        {
-            if (!isDragging) return;
+        private void panelProgressBar_MouseUp(object? sender, MouseEventArgs e)
+		{
+			if (!isDragging) return;
 
-            isDragging = false;
+			isDragging = false;
 
-            float ratio = (float)e.X / panelProgressBar.Width;
-            simulatedProgressRatio = Math.Clamp(ratio, 0f, 1f);
+			float ratio = (float)e.X / panelProgressBar.Width;
+			simulatedProgressRatio = Math.Clamp(ratio, 0f, 1f);
 
-            simulatedCurrentTime = TimeSpan.FromSeconds(simulatedTotalTime.TotalSeconds * simulatedProgressRatio);
-            panelProgressBar.Invalidate();
-        }
+			simulatedCurrentTime = TimeSpan.FromSeconds(simulatedTotalTime.TotalSeconds * simulatedProgressRatio);
+
+			// Tell the audio engine to seek
+			audioPlayer.Seek(simulatedCurrentTime);
+
+			panelProgressBar.Invalidate();
+		}
 
         private void panelProgressBar_MouseMove(object? sender, MouseEventArgs e) // Triggered when the user moves the mouse while holding it down
         {
@@ -366,19 +372,35 @@ namespace AstroPlay
 
         private void btnPlayOrPause_Click(object sender, EventArgs e)
         {
+            string songPath = "F:/Music/Splurgeboys - Safeword.mp3";
+
             if (isPlaying)
             {
                 btnPlayOrPause.BackgroundImage = Image.FromFile("Icons/play.png"); // play icon
                 isPlaying = false;
+                audioPlayer.Pause(); // Pause your audio playback here
                 playbackTimer.Stop(); // This stops the timer when Pause is clicked
-                                      // Pause your audio playback here
+                isPaused = true;
             }
             else
             {
                 btnPlayOrPause.BackgroundImage = Image.FromFile("Icons/pause.png"); // pause icon
                 isPlaying = true;
-                playbackTimer.Start(); // This starts the timer when Play is clicked
-                                       // Start or resume your audio playback here
+                if (isPaused)
+                {
+                    audioPlayer.Resume(); // Resume playback if it was paused
+                    playbackTimer.Start(); // Resumes playback timer
+                    isPaused = false;
+                }
+                else
+                {
+                    // only reset when starting fresh
+                    LoadSongMetadata(songPath);
+                    audioPlayer.Play(songPath);
+                    simulatedCurrentTime = TimeSpan.Zero;
+                    simulatedProgressRatio = 0.0;
+                    playbackTimer.Start();
+                }
             }
         }
         private void btnShuffle_Click(object sender, EventArgs e)
@@ -435,12 +457,17 @@ namespace AstroPlay
 
         private void PlaybackTimer_Tick(object? sender, EventArgs e)
         {
-            if (!isPlaying || isDragging) return; // Don't update while dragging
+            if (!isPlaying || isDragging) return;
 
             if (simulatedCurrentTime < simulatedTotalTime)
             {
                 simulatedCurrentTime = simulatedCurrentTime.Add(TimeSpan.FromSeconds(1));
                 simulatedProgressRatio = simulatedCurrentTime.TotalSeconds / simulatedTotalTime.TotalSeconds;
+
+                // Update labels
+                labelTimerLeft.Text = simulatedCurrentTime.ToString(@"hh\:mm\:ss");
+                labelTimerRight.Text = (simulatedTotalTime - simulatedCurrentTime).ToString(@"hh\:mm\:ss");
+
                 panelProgressBar.Invalidate();
             }
             else
@@ -449,10 +476,54 @@ namespace AstroPlay
                 isPlaying = false;
                 btnPlayOrPause.BackgroundImage = Image.FromFile("Icons/play.png");
 
-                // Reset visual and simulated time
+                // Reset visuals
                 simulatedProgressRatio = 0.0;
                 simulatedCurrentTime = TimeSpan.Zero;
+                labelTimerLeft.Text = "00:00:00";
+                labelTimerRight.Text = simulatedTotalTime.ToString(@"hh\:mm\:ss");
                 panelProgressBar.Invalidate();
+            }
+        }
+
+        private void LoadSongMetadata(string filePath)
+        {
+            try
+            {
+                var file = TagLib.File.Create(filePath);
+
+                string title = file.Tag.Title ?? Path.GetFileNameWithoutExtension(filePath);
+                string artist = string.Join(", ", file.Tag.Performers);
+                string album = file.Tag.Album;
+                uint year = file.Tag.Year;
+                TimeSpan duration = file.Properties.Duration;
+
+                // Album art
+                if (file.Tag.Pictures.Length > 0)
+                {
+                    var bin = (byte[])(file.Tag.Pictures[0].Data.Data);
+                    using (var ms = new MemoryStream(bin))
+                    {
+                        pictureBoxAlbumArt.Image = Image.FromStream(ms);
+                        pictureBoxAlbumArt.SizeMode = PictureBoxSizeMode.Zoom;
+                    }
+                }
+
+                // Metadata labels
+                lblSongName.Text = title;
+                lblArtistName.Text = artist;
+                lblAlbumName.Text = album;
+
+                // Store duration for playback simulation
+                simulatedTotalTime = duration;
+                simulatedCurrentTime = TimeSpan.Zero;
+
+                // Init labels
+                labelTimerLeft.Text = "00:00:00";
+                labelTimerRight.Text = duration.ToString(@"hh\:mm\:ss");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error reading metadata: {ex.Message}");
             }
         }
     }

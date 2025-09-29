@@ -37,7 +37,7 @@
             lblArtistName = new Label();
             labelTimerRight = new Label();
             labelTimerLeft = new Label();
-            pictureBox1 = new PictureBox();
+            pictureBoxAlbumArt = new PictureBox();
             btnRepeat = new Button();
             btnPlayOrPause = new Button();
             btnNext = new Button();
@@ -60,7 +60,7 @@
             panelMainContent = new Panel();
             panelPlayerControls.SuspendLayout();
             panelProgressBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxAlbumArt).BeginInit();
             panelSideMenu.SuspendLayout();
             panelPlaylistSubMenu.SuspendLayout();
             panelMusicSubMenu.SuspendLayout();
@@ -78,7 +78,7 @@
             panelPlayerControls.Controls.Add(lblArtistName);
             panelPlayerControls.Controls.Add(labelTimerRight);
             panelPlayerControls.Controls.Add(labelTimerLeft);
-            panelPlayerControls.Controls.Add(pictureBox1);
+            panelPlayerControls.Controls.Add(pictureBoxAlbumArt);
             panelPlayerControls.Controls.Add(btnRepeat);
             panelPlayerControls.Controls.Add(btnPlayOrPause);
             panelPlayerControls.Controls.Add(btnNext);
@@ -151,11 +151,11 @@
             labelTimerRight.BackColor = Color.FromArgb(10, 25, 45);
             labelTimerRight.Font = new Font("Microsoft Sans Serif", 8.1F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelTimerRight.ForeColor = SystemColors.ButtonHighlight;
-            labelTimerRight.Location = new Point(842, 83);
+            labelTimerRight.Location = new Point(837, 83);
             labelTimerRight.Name = "labelTimerRight";
-            labelTimerRight.Size = new Size(47, 15);
+            labelTimerRight.Size = new Size(49, 15);
             labelTimerRight.TabIndex = 13;
-            labelTimerRight.Text = "0:00:00";
+            labelTimerRight.Text = "00:00:00";
             labelTimerRight.TextAlign = ContentAlignment.MiddleRight;
             // 
             // labelTimerLeft
@@ -166,21 +166,21 @@
             labelTimerLeft.ForeColor = SystemColors.ButtonHighlight;
             labelTimerLeft.Location = new Point(12, 83);
             labelTimerLeft.Name = "labelTimerLeft";
-            labelTimerLeft.Size = new Size(47, 15);
+            labelTimerLeft.Size = new Size(49, 15);
             labelTimerLeft.TabIndex = 12;
-            labelTimerLeft.Text = "0:00:00";
+            labelTimerLeft.Text = "00:00:00";
             labelTimerLeft.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // pictureBox1
+            // pictureBoxAlbumArt
             // 
-            pictureBox1.BackColor = Color.LightSteelBlue;
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(12, 6);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(67, 67);
-            pictureBox1.TabIndex = 11;
-            pictureBox1.TabStop = false;
+            pictureBoxAlbumArt.BackColor = Color.LightSteelBlue;
+            pictureBoxAlbumArt.BackgroundImage = (Image)resources.GetObject("pictureBoxAlbumArt.BackgroundImage");
+            pictureBoxAlbumArt.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBoxAlbumArt.Location = new Point(12, 6);
+            pictureBoxAlbumArt.Name = "pictureBoxAlbumArt";
+            pictureBoxAlbumArt.Size = new Size(67, 67);
+            pictureBoxAlbumArt.TabIndex = 11;
+            pictureBoxAlbumArt.TabStop = false;
             // 
             // btnRepeat
             // 
@@ -534,7 +534,7 @@
             panelPlayerControls.ResumeLayout(false);
             panelPlayerControls.PerformLayout();
             panelProgressBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxAlbumArt).EndInit();
             panelSideMenu.ResumeLayout(false);
             panelPlaylistSubMenu.ResumeLayout(false);
             panelMusicSubMenu.ResumeLayout(false);
@@ -565,15 +565,15 @@
         private Button btnPlayOrPause;
         private Button btnPrevious;
         private Button btnShuffle;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBoxAlbumArt;
         private Label labelTimerLeft;
-        private Label labelTimerRight;
-        private Label lblArtistName;
-        private Label lblAlbumName;
-        private Label lblSongName;
         private Panel panelProgressBar;
         private Panel panel1;
         private Button btnRepeat;
         private PictureBox pictureBoxLogo;
+        internal Label labelTimerRight;
+        internal Label lblArtistName;
+        internal Label lblAlbumName;
+        internal Label lblSongName;
     }
 }

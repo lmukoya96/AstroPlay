@@ -42,5 +42,16 @@ namespace AstroPlay
             audioFile = null;
             outputDevice = null;
         }
+
+        public void Seek(TimeSpan position)
+        {
+            if (audioFile != null)
+            {
+                if (position < TimeSpan.Zero) position = TimeSpan.Zero;
+                if (position > audioFile.TotalTime) position = audioFile.TotalTime;
+                audioFile.CurrentTime = position;
+            }
+        }
+
     }
 }
