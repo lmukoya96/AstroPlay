@@ -529,6 +529,7 @@
             Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
+            MinimumSize = new Size(917, 595);
             Name = "AstroPlayMain";
             Text = "Form1";
             panelPlayerControls.ResumeLayout(false);
